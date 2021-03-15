@@ -7,15 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		173E929C25FF61F000FADD16 /* loginbg.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 173E929B25FF61F000FADD16 /* loginbg.mp4 */; };
 		1750AEA725FE806C00AE32F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1750AEA625FE806C00AE32F8 /* AppDelegate.swift */; };
 		1750AEA925FE806C00AE32F8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1750AEA825FE806C00AE32F8 /* SceneDelegate.swift */; };
 		1750AEAB25FE806C00AE32F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1750AEAA25FE806C00AE32F8 /* ViewController.swift */; };
 		1750AEAE25FE806C00AE32F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1750AEAC25FE806C00AE32F8 /* Main.storyboard */; };
 		1750AEB025FE806E00AE32F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1750AEAF25FE806E00AE32F8 /* Assets.xcassets */; };
 		1750AEB325FE806E00AE32F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1750AEB125FE806E00AE32F8 /* LaunchScreen.storyboard */; };
+		1750AEBC25FE840500AE32F8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1750AEBB25FE840500AE32F8 /* LoginViewController.swift */; };
+		1750AEBF25FE841E00AE32F8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1750AEBE25FE841E00AE32F8 /* SignUpViewController.swift */; };
+		1750AEC225FE842900AE32F8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1750AEC125FE842900AE32F8 /* HomeViewController.swift */; };
+		1750AED825FE9EF500AE32F8 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1750AED725FE9EF500AE32F8 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		173E929B25FF61F000FADD16 /* loginbg.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = loginbg.mp4; sourceTree = "<group>"; };
 		1750AEA325FE806C00AE32F8 /* FirebaseLoginApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebaseLoginApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1750AEA625FE806C00AE32F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1750AEA825FE806C00AE32F8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +30,10 @@
 		1750AEAF25FE806E00AE32F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1750AEB225FE806E00AE32F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1750AEB425FE806E00AE32F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1750AEBB25FE840500AE32F8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1750AEBE25FE841E00AE32F8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		1750AEC125FE842900AE32F8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		1750AED725FE9EF500AE32F8 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +66,7 @@
 		1750AEA525FE806C00AE32F8 /* FirebaseLoginApp */ = {
 			isa = PBXGroup;
 			children = (
+				173E929B25FF61F000FADD16 /* loginbg.mp4 */,
 				1750AEA625FE806C00AE32F8 /* AppDelegate.swift */,
 				1750AEA825FE806C00AE32F8 /* SceneDelegate.swift */,
 				1750AEAA25FE806C00AE32F8 /* ViewController.swift */,
@@ -63,6 +74,10 @@
 				1750AEAF25FE806E00AE32F8 /* Assets.xcassets */,
 				1750AEB125FE806E00AE32F8 /* LaunchScreen.storyboard */,
 				1750AEB425FE806E00AE32F8 /* Info.plist */,
+				1750AEBB25FE840500AE32F8 /* LoginViewController.swift */,
+				1750AEBE25FE841E00AE32F8 /* SignUpViewController.swift */,
+				1750AEC125FE842900AE32F8 /* HomeViewController.swift */,
+				1750AED725FE9EF500AE32F8 /* Utilities.swift */,
 			);
 			path = FirebaseLoginApp;
 			sourceTree = "<group>";
@@ -124,6 +139,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				173E929C25FF61F000FADD16 /* loginbg.mp4 in Resources */,
 				1750AEB325FE806E00AE32F8 /* LaunchScreen.storyboard in Resources */,
 				1750AEB025FE806E00AE32F8 /* Assets.xcassets in Resources */,
 				1750AEAE25FE806C00AE32F8 /* Main.storyboard in Resources */,
@@ -137,9 +153,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1750AEBC25FE840500AE32F8 /* LoginViewController.swift in Sources */,
 				1750AEAB25FE806C00AE32F8 /* ViewController.swift in Sources */,
+				1750AED825FE9EF500AE32F8 /* Utilities.swift in Sources */,
 				1750AEA725FE806C00AE32F8 /* AppDelegate.swift in Sources */,
 				1750AEA925FE806C00AE32F8 /* SceneDelegate.swift in Sources */,
+				1750AEBF25FE841E00AE32F8 /* SignUpViewController.swift in Sources */,
+				1750AEC225FE842900AE32F8 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
