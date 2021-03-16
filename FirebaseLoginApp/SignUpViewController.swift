@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
     
@@ -144,12 +146,39 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         return isFormValid
     }
     
+    func showAuthError(_ error: String) {
+        self.passwordValidationErrorLabel.text = error
+        self.passwordValidationErrorLabel.isHidden = false
+    }
+    
     @IBAction func signUpTapped(_ sender: Any) {
         if(validateAllTextFields()){
-            print("FORM IS VALID")
-            //TODO: Operations
-        } else {
-            print("FORM IS NOT VALID")
+            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+            let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
+                
+                if let error = error {
+                    self?.showAuthError(error.localizedDescription)
+                    return
+                }
+                
+                let db = Firestore.firestore()
+                db.collection("users").addDocument(data: ["firstname": firstName!, "lastname": lastName!, "uid": authResult!.user.uid]) { (error) in
+                    if let error = error {
+                        self?.showAuthError(error.localizedDescription)
+                    }
+                }
+                self?.transitionToHome()
+            }
         }
+    }
+    
+    func transitionToHome() {
+        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
+        view.window?.rootViewController = homeViewController
+        view.window?.makeKeyAndVisible()
     }
 }
