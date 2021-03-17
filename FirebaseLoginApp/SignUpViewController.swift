@@ -21,11 +21,67 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var lastNameValidationErrorLabel: UILabel!
     @IBOutlet weak var emailValidationErrorLabel: UILabel!
     @IBOutlet weak var passwordValidationErrorLabel: UILabel!
-    
+        
+    @IBOutlet weak var stackViewTopConstraint: NSLayoutConstraint!
+    let defaultStackviewTopConstraint: CGFloat = 20
+    var totalSafeAreaHeight: CGFloat = 0
+    var myKeyboardHeight: CGFloat?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        modifyComponents()
+        self.calculateSafeAreaHeight()
+        self.modifyComponents()
+        self.addObserversForKeyboard()
+    }
+    
+    func addObserversForKeyboard() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillDisapper),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+    
+    func animationOnFormForKeyboard(clickOnPasswordTextField swipePasswordField:Bool) {
+        if(swipePasswordField) {
+            let viewHeight = self.view.frame.maxY - (self.navigationController?.navigationBar.frame.height)! - self.totalSafeAreaHeight
+            self.stackViewTopConstraint.constant = viewHeight - self.signUpButton.frame.maxY - self.myKeyboardHeight! - self.defaultStackviewTopConstraint
+        }
+        else {
+            self.stackViewTopConstraint.constant = defaultStackviewTopConstraint
+        }
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func calculateSafeAreaHeight() {
+        let window = UIApplication.shared.windows[0]
+        let topPadding = window.safeAreaInsets.top
+        let bottomPadding = window.safeAreaInsets.bottom
+        self.totalSafeAreaHeight = topPadding + bottomPadding
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            self.myKeyboardHeight = keyboardHeight
+        }
+    }
+    
+    @objc func keyboardWillDisapper(_ notification: Notification) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+            self.animationOnFormForKeyboard(clickOnPasswordTextField: false)
+        }
     }
     
     func modifyComponents(){
@@ -101,6 +157,17 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         let _ = validateTextField(textField)
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        switch textField {
+            case firstNameTextField, lastNameTextField, emailTextField:
+                self.animationOnFormForKeyboard(clickOnPasswordTextField: false)
+            case passwordTextField:
+                self.animationOnFormForKeyboard(clickOnPasswordTextField: true)
+            default:
+                break
+        }
     }
                 
     func validateTextField(_ textField: UITextField) -> Bool {

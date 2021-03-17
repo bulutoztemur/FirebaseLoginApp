@@ -168,6 +168,7 @@
                         <outlet property="passwordTextField" destination="4vd-uT-8R6" id="cW7-Gs-YyQ"/>
                         <outlet property="passwordValidationErrorLabel" destination="wLL-aU-056" id="j8o-6T-0EO"/>
                         <outlet property="signUpButton" destination="wGP-hV-690" id="HBz-LS-ffX"/>
+                        <outlet property="stackViewTopConstraint" destination="4om-W9-z3Y" id="UMZ-TU-NNe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C46-gt-9wK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
